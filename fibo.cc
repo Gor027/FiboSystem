@@ -397,7 +397,7 @@ bool Fibo::operator==(const Fibo &f2) const {
     if (this->value.size() != f2.value.size())
         return false;
 
-    for (size_t i = 0; i < value.size(); i++)
+    for (size_t i = value.size() - 1; i >= 0; i--)
         if (this->value[i] != f2.value[i])
             return false;
 
@@ -415,8 +415,10 @@ bool Fibo::operator<(const Fibo &f2) const {
 
     if (this->value.size() > f2.value.size())
         return false;
+    else if (this->value.size() < f2.value.size())
+        return true;
     else {
-        for (size_t i = 0; i < this->value.size(); i++) {
+        for (size_t i = this->value.size() - 1; i >= 0; i--) {
             if (this->value[i] > f2.value[i])
                 return false;
         }
@@ -454,8 +456,10 @@ bool Fibo::operator>(const Fibo &f2) const {
 
     if (this->value.size() < f2.value.size())
         return false;
+    else if (this->value.size() > f2.value.size())
+        return true;
     else {
-        for (size_t i = 0; i < f2.value.size(); i++) {
+        for (size_t i = f2.value.size() - 1; i >= 0; i--) {
             if (this->value[i] < f2.value[i])
                 return false;
         }
@@ -482,7 +486,6 @@ Fibo::~Fibo() {}
 
 int main() {
 
-        
 
     return 0;
 }
